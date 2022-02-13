@@ -9,25 +9,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.waquim.cursomc.domain.Categoria;
-import com.waquim.cursomc.services.CategoriaService;
+import com.waquim.cursomc.domain.Produto;
+import com.waquim.cursomc.services.ProdutoService;
 
 @RestController
-@RequestMapping(value = "/categorias")
-public class CategoriaResource {
-	
+@RequestMapping(value = "/produtos")
+public class ProdutoResource {
+
 	@Autowired
-	private CategoriaService service;
-	
+	private ProdutoService service;
+
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<?> findById(@PathVariable Integer id) {
-		Categoria cat = service.findById(id);
-		return ResponseEntity.ok().body(cat);
+		Produto obj = service.findById(id);
+		return ResponseEntity.ok().body(obj);
 	}
-	
-	
+
 	@RequestMapping(method = RequestMethod.GET)
-	public List<Categoria> listAll() {			
+	public List<Produto> listAll() {
 		return service.findAll();
 	}
 
